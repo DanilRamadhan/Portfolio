@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhamad Danil Ramadhan — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1020; --card:#131A2E; --ink:#EAF0FF; --soft:#9AA7C7; --line:#232D4A;
+  --accent:#7D9BFF; --tint:#1B2650; --mint:#12372B; --mint-ink:#8FE8BC; --on-accent:#0B1020;
+  --side:300px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;line-height:1.1}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* ---------- sidebar ---------- */
+.side{position:fixed;inset:0 auto 0 0;width:var(--side);padding:36px 28px;display:flex;flex-direction:column;gap:24px;border-right:1px solid var(--line);background:rgba(11,16,32,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);overflow-y:auto;z-index:30}
+.arch{width:150px;height:190px;border-radius:999px 999px 18px 18px;background:linear-gradient(160deg,#2A3A80,var(--tint));overflow:hidden;animation:rise .8s cubic-bezier(.2,.8,.3,1) both}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:center top}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.side h1{font-size:1.7rem;font-weight:800}
+.side .role{color:var(--soft);font-size:.92rem;margin-top:6px}
+.menu{display:flex;flex-direction:column;gap:2px;margin-top:4px}
+.menu a{text-decoration:none;color:var(--soft);padding:7px 12px;border-radius:10px;font-weight:500;font-size:.93rem;transition:background .15s,color .15s}
+.menu a:hover{background:var(--tint);color:var(--ink)}
+.menu a.active{background:var(--accent);color:var(--on-accent)}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:.9rem;padding:12px 20px;border-radius:999px;background:var(--accent);color:var(--on-accent);text-align:center;transition:background .15s,transform .15s}
+.btn:hover{background:#fff}
+.btn:active{transform:scale(.97)}
+.side .btn{margin-top:auto}
+
+/* ---------- main ---------- */
+main{margin-left:var(--side);padding:0 clamp(24px,5vw,72px)}
+section{padding:80px 0;border-bottom:1px solid var(--line);max-width:900px}
+section:last-of-type{border-bottom:none}
+#about{padding-top:72px}
+h2{font-size:2.2rem;font-weight:800;margin-bottom:8px}
+.sub{color:var(--soft);max-width:58ch;margin-bottom:28px}
+h2+*{margin-top:24px}
+.sub{margin-top:0}
+
+:root{--gut:clamp(24px,5vw,72px)}
+.hero{position:relative;overflow:hidden;isolation:isolate;margin:0 calc(-1*var(--gut)) 0 calc(-1*(var(--side) + var(--gut)));padding:120px var(--gut) 96px calc(var(--side) + var(--gut));min-height:92vh;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url('hero-bg.jpg') 72% 30%/cover no-repeat #1B2650;transform-origin:70% 40%;animation:heroZoom 2.2s cubic-bezier(.2,.7,.2,1) both}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(90deg,rgba(11,16,32,.88) 0%,rgba(11,16,32,.55) 48%,rgba(11,16,32,.12) 100%),
+  linear-gradient(180deg,rgba(11,16,32,0) 62%,var(--bg) 100%)}
+@keyframes heroZoom{from{transform:scale(1.12);opacity:.6}to{transform:scale(1);opacity:1}}
+.hero>*{max-width:min(620px,100%)}
+.hero .kicker{display:flex;align-items:center;gap:12px;color:#C3CDE8;font-size:.95rem;animation:fadeUp .7s .1s both}
+.hero .kicker::before{content:"";width:22px;height:2px;background:var(--accent)}
+.hero h1{font-size:clamp(2.8rem,7vw,5.4rem);font-weight:800;line-height:.98;color:#fff}
+.hero h1 .word{display:inline-block;opacity:0;transform:translateY(28px);animation:wordIn .7s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes wordIn{to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hero .hrole{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.15rem,2.2vw,1.55rem);color:var(--accent);animation:fadeUp .7s .55s both}
+.hero .hlede{color:#C3CDE8;font-size:1.03rem;max-width:52ch;margin:6px 0 14px;animation:fadeUp .7s .7s both}
+.hero .btn{width:fit-content;animation:fadeUp .7s .85s both}
+.lede{color:var(--soft);max-width:60ch;font-size:1.05rem}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:28px}
+.fact{background:var(--card);border-radius:16px;padding:16px 18px;border:1px solid var(--line)}
+.fact b{display:block;font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:2px}
+
+/* education */
+.edu{display:grid;grid-template-columns:48px 1fr auto;gap:8px 18px;align-items:center;background:var(--card);border-radius:16px;padding:18px 20px;border:1px solid var(--line);margin-bottom:12px}
+.edu .ico{width:48px;height:48px;border-radius:12px;background:var(--tint);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.edu .ico img{max-width:75%;max-height:75%}
+.ico[data-fb]{position:relative}
+.ico.nologo::after{content:attr(data-fb);position:absolute;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:.8rem;color:var(--accent)}
+.edu h3{font-size:1.1rem}
+.edu span{color:var(--soft);font-size:.88rem}
+.edu .meta{text-align:right;font-size:.85rem;color:var(--soft)}
+.edu .meta b{display:block;color:var(--ink);font-size:1rem}
+@media(max-width:640px){.edu{grid-template-columns:48px 1fr}.edu .meta{grid-column:2;text-align:left}}
+
+/* skills */
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:12px}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 8px;text-align:center;font-size:.8rem;color:var(--soft)}
+.tool img{width:36px;height:36px;object-fit:contain;margin:0 auto 8px}
+h3.mini{font-size:1.2rem;margin:36px 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--mint);color:var(--mint-ink);font-size:.8rem;font-weight:500;padding:5px 13px;border-radius:999px}
+
+/* experience / volunteer / project rows */
+.row{display:grid;grid-template-columns:170px 1fr;gap:12px 32px;padding:28px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:none;padding-top:8px}
+.when{font-size:.86rem;color:var(--soft);font-weight:500}
+.when b{display:block;color:var(--accent)}
+.row h3{font-size:1.3rem}
+.row .org{color:var(--soft);margin:2px 0 14px}
+.row ul{list-style:none;display:grid;gap:8px;max-width:68ch}
+.row li{padding-left:18px;position:relative;color:#C3CDE8;font-size:.95rem}
+.row li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.row .chips{margin-top:16px}
+@media(max-width:720px){.row{grid-template-columns:1fr}}
+
+/* galleries */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:24px}
+figure{background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+figure .ph{aspect-ratio:4/3;background:linear-gradient(135deg,var(--tint),#12372B)}
+figure img{width:100%;height:100%;object-fit:cover}
+figcaption{padding:10px 14px;font-size:.85rem;color:var(--soft)}
+figure a{display:block}
+.gal.cert{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.gal.cert .ph{aspect-ratio:210/297;background:#f6f1e4}
+.gal.cert .ph img{object-fit:contain}
+figcaption b{display:block;color:var(--ink);font-weight:600;font-size:.88rem;line-height:1.3;margin-bottom:2px}
+.paper{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px}
+.paper h3{font-size:1.25rem;margin:4px 0 14px;max-width:46ch}
+
+/* contact */
+.contact{margin:0 calc(-1*var(--gut)) 0 calc(-1*(var(--side) + var(--gut)));padding:96px var(--gut) 96px calc(var(--side) + var(--gut));color:#fff;background:linear-gradient(180deg,rgba(11,16,32,.6) 0%,rgba(11,16,32,.9) 100%),url('contact-bg.jpg') center 30%/cover no-repeat #1E2C70}
+.contact h2{color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);max-width:16ch}
+.contact .links{display:flex;flex-direction:column;gap:8px;margin:24px 0 28px}
+.contact .links a{text-decoration:none;color:#C9D5F5;width:fit-content;border-bottom:1px solid transparent}
+.contact .links a:hover{border-color:#fff;color:#fff}
+.contact .btn{background:#fff;color:var(--on-accent)}
+.contact .btn:hover{background:var(--accent)}
+footer{font-size:.8rem;color:var(--soft);padding:24px 0 32px}
+
+/* mobile */
+.top{display:none}
+@media(max-width:900px){
+  .side{display:none}
+  main{margin-left:0}
+  .top{display:flex;position:sticky;top:0;z-index:20;gap:6px;overflow-x:auto;padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+  .top a{white-space:nowrap;text-decoration:none;font-size:.85rem;font-weight:500;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+  .top a.active{background:var(--accent);color:var(--on-accent)}
+  .hero{margin-left:calc(-1*var(--gut));padding:72px var(--gut) 72px;min-height:86vh;justify-content:flex-end}
+  .contact{margin-left:calc(-1*var(--gut));padding-left:var(--gut)}
+  .hero::before{background-position:68% 20%}
+  .hero::after{background:linear-gradient(180deg,rgba(11,16,32,.25) 0%,rgba(11,16,32,.85) 70%,var(--bg) 100%)}
+}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in-view{opacity:1;transform:none}
+.edu,.fact,.tool,figure,.paper{transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.edu.in-view:hover,.fact.in-view:hover,.tool.in-view:hover,figure.in-view:hover,.paper.in-view:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 18px 32px -20px rgba(0,0,0,.9)}
+figure .ph{overflow:hidden}
+figure .ph img{transition:transform .5s ease}
+figure:hover .ph img{transform:scale(1.06)}
+.chip{transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),background .2s,color .2s}
+.chip:hover{background:var(--mint-ink);color:var(--mint)}
+@media(prefers-reduced-motion:reduce){
+  .arch,.hero::before,.hero .kicker,.hero .hrole,.hero .hlede,.hero .btn,.hero h1 .word{animation:none;opacity:1;transform:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- Desktop sidebar -->
+<aside class="side">
+  <div class="arch"><img src="DANIL PORTO.jpeg" alt="Photo of Muhamad Danil Ramadhan"></div>
+  <div>
+    <h1>Muhamad Danil Ramadhan</h1>
+    <p class="role">Business Management Enthusiast</p>
+  </div>
+  <nav class="menu" id="menu">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills &amp; Tools</a>
+    <a href="#experience">Experience</a>
+    <a href="#project">Project</a>
+    <a href="#certificate">Certificate</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</aside>
+
+<!-- Mobile nav -->
+<nav class="top" id="top">
+  <a href="#about">About</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#project">Project</a><a href="#certificate">Certificate</a><a href="#publication">Publication</a><a href="#contact">Contact</a>
+</nav>
+
+<main>
+  <header class="hero">
+    <p class="kicker">Management · Universitas Gunadarma</p>
+    <h1 class="hero-title">Muhamad Danil Ramadhan</h1>
+    <p class="hrole">Business Management Enthusiast</p>
+    <p class="hlede">Management student with a solid foundation in business operations, organizational management, and analytical problem solving, proficient in Microsoft Office and Google Workspace.</p>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="lede">Management student at Universitas Gunadarma with a GPA of 3.48/4.00. Built a solid foundation in the core management functions of planning, organizing, leading, and controlling, alongside human resource, marketing, operations, and financial management. Strong in analytical thinking, problem solving, communication, and cross-functional teamwork, with a habit of turning business problems into structured plans and clear reports. Proficient in Microsoft Office and Google Workspace for reporting, data processing, presentations, and team collaboration. Seeking internship or full-time opportunities in business management, operations, or administration.</p>
+    <div class="facts">
+      <div class="fact"><b>University</b>Universitas Gunadarma</div>
+      <div class="fact"><b>GPA</b>3.48/4.00</div>
+      <div class="fact"><b>Location</b>Bogor, Indonesia</div>
+      <div class="fact"><b>Status</b>Open to internship &amp; full-time roles</div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu">
+      <div class="edu-icon"><img src="LOGO_GUNDAR-removebg-preview.png" alt="Logo Gunadarma"></div>
+      <div><h3>Management</h3><span>Universitas Gunadarma</span></div>
+      <div class="meta"><b>3.48/4.00</b>5 Sept 2022 — 28 Aug 2026</div>
+    </div>
+    <div class="edu">
+      <div class="edu-icon"><img src="Logo Nepal.png" alt="Logo SMA Negeri 1 Cileungsi"></div>
+      <div><h3>Math & Science Program</h3><span>SMA Negeri 1 Cileungsi</span></div>
+      <div class="meta"><b>85.00/100</b>2019 — 2022</div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills &amp; Tools</h2>
+    <p class="sub">Software and tools used across study, work, and projects.</p>
+    <div class="tools">
+      <div class="tool"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg" alt="Excel">Excel</div>
+      <div class="tool"><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg" alt="Word">Word</div>
+      <div class="tool"><img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Microsoft_Office_PowerPoint_%282019%E2%80%932025%29.svg" alt="PowerPoint">PowerPoint</div>
+      <div class="tool"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail">Gmail</div>
+      <div class="tool"><img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png" alt="Google Drive">Google Drive</div>
+      <div class="tool"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Google_Sheets_2020_Logo.svg" alt="Google Sheets">Google Sheets</div>
+      <div class="tool"><img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Google_Docs_2020_Logo.svg" alt="Google Docs">Google Docs</div>
+      <div class="tool"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Google_Meet_text_logo_%282020%29.svg" alt="Google Meet">Google Meet</div>
+    </div>
+    <h3 class="mini">Skills</h3>
+    <div class="chips"><span class="chip">Microsoft Office</span><span class="chip">Google Workspace</span><span class="chip">Analytical Thinking</span><span class="chip">Problem Solving</span><span class="chip">Teamwork</span><span class="chip">Communication</span><span class="chip">Time Management</span></div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <p class="sub">Work experience, internships, and practical business experience.</p>
+
+    <article class="row">
+      <div class="when"><b>2026</b>Jan – Mar</div>
+      <div>
+        <h3>Museum Operations &amp; Visitor Services Coordinator (Intern)</h3>
+        <p class="org">Museum Anjungan Riau — Taman Mini Indonesia Indah (TMII), Jakarta</p>
+        <ul>
+          <li>Coordinated visitor flow to maintain orderly movement and provide a smooth museum experience.</li>
+          <li>Supported visitor comfort by assisting guests and responding to their needs on site.</li>
+          <li>Organized and coordinated fellow interns’ tasks to support daily museum operations.</li>
+          <li>Supported the overall operational readiness of Museum Anjungan Riau at TMII.</li>
+        </ul>
+        <div class="gal" style="margin:20px 0 0">
+          <figure><div class="ph"><img src="Magang Danil.jpeg" alt="Internship at Museum Anjungan Riau"></div><figcaption>Museum operations internship</figcaption></figure>
+          <figure><div class="ph"><img src="SERTI DANIL.png" alt="Internship certificate"></div><figcaption>Internship certificate</figcaption></figure>
+        </div>
+        <div class="chips"><span class="chip">Operations Coordination</span><span class="chip">Visitor Services</span><span class="chip">Team Coordination</span><span class="chip">Customer Service</span></div>
+      </div>
+    </article>
+
+    <article class="row">
+      <div class="when"><b>Family Business</b>Retail Operations</div>
+      <div>
+        <h3>Store Operations Assistant – Family-Owned Franchise Business</h3>
+        <p class="org">Family-Owned Retail Business</p>
+        <ul>
+          <li>Supported daily store operations to help ensure smooth business activities.</li>
+          <li>Provided customer service and assisted customers with their needs.</li>
+          <li>Helped maintain product availability and keep stock organized.</li>
+          <li>Applied communication, customer service, time management, problem-solving, and basic operational management skills.</li>
+          <li>Contributed to smooth business operations while developing practical knowledge of business management and customer service.</li>
+        </ul>
+        <div class="chips"><span class="chip">Store Operations</span><span class="chip">Customer Service</span><span class="chip">Inventory Support</span><span class="chip">Time Management</span><span class="chip">Problem Solving</span></div>
+      </div>
+    </article>
+  </section>
+
+  <section id="project">
+    <h2>Project</h2>
+    <p class="sub">Course project for Project Management: a hands-on micro-business, from planning to selling on location.</p>
+    <div class="gal">
+      <figure><div class="ph"><img src="danofin-1.jpg" alt="Preparing Danofin products"></div><figcaption>Preparing the products</figcaption></figure>
+      <figure><div class="ph"><img src="danofin-2.jpg" alt="Selling Danofin products on location"></div><figcaption>Selling on location</figcaption></figure>
+      <figure><div class="ph"><img src="danofin-3.jpg" alt="Danofin stall setup"></div><figcaption>Stall setup</figcaption></figure>
+      <figure><div class="ph"><img src="danofin-4.jpg" alt="Danofin product display"></div><figcaption>Product display</figcaption></figure>
+    </div>
+    <div class="paper">
+      <span class="when"><b>10 — 24 November 2024</b></span>
+      <h3>Danofin — Student Snack Micro-Business Project</h3>
+      <div class="facts" style="margin:6px 0 20px">
+        <div class="fact"><b>Total cost</b>Rp1,024,500</div>
+        <div class="fact"><b>Initial capital</b>Rp1,100,000</div>
+        <div class="fact"><b>Projected revenue</b>Rp1,272,000</div>
+        <div class="fact"><b>Projected profit</b>≈ Rp248,000</div>
+      </div>
+      <ul class="row" style="display:grid;grid-template-columns:1fr;border:none;padding:0">
+        <li>Planned and ran a three-day snack business with a partner, selling mini dimsum, mini fried chicken, onigiri, sushi, sandwiches, and risoles at Stadion Pakansari and schools around Citeureup, Bogor.</li>
+        <li>Co-authored the project report: product planning, cost budgeting, initial capital, sales projections, target market, marketing strategy, and project schedule.</li>
+        <li>Served as field team member: promoted products to customers, prepared and carried equipment, and carried out the business leader's instructions on site.</li>
+        <li>Supported the marketing plan, including a pre-order system through WhatsApp and Instagram and selling at high-traffic locations.</li>
+      </ul>
+      <div class="chips" style="margin-top:16px"><span class="chip">Project Planning</span><span class="chip">Budgeting</span><span class="chip">Sales Projection</span><span class="chip">Marketing Strategy</span><span class="chip">Operations</span><span class="chip">Teamwork</span></div>
+      <p style="margin-top:20px"><a class="btn" href="Laporan_Usaha_Danofin_Kelompok_8.pdf" target="_blank" rel="noopener">View project report (PDF)</a></p>
+    </div>
+  </section>
+
+  <section id="certificate">
+    <h2>Certificate</h2>
+    <p class="sub">Professional training certificates from Universitas Gunadarma. Select a certificate to open the full PDF.</p>
+    <div class="gal cert">
+      <figure><a href="service-strategy.pdf" target="_blank" rel="noopener"><div class="ph"><img src="service-strategy.jpg" alt="Certificate: Service Strategy and Innovation" loading="lazy"></div></a><figcaption><b>Service Strategy and Innovation</b>2 — 13 June 2026</figcaption></figure>
+      <figure><div class="ph"><img src="aptitude-test.jpg" alt="Certificate: Aptitude Test" loading="lazy"></div><figcaption><b>Aptitude Test</b>24 February 2026</figcaption></figure>
+      <figure><a href="credit-management.jpg" target="_blank" rel="noopener"><div class="ph"><img src="credit-management.jpg" alt="Certificate: Professional Credit Management for Account Officers and Credit Analysts" loading="lazy"></div></a><figcaption><b>Professional Credit Management for Account Officers and Credit Analysts</b>22 — 27 September 2025</figcaption></figure>
+      <figure><a href="sales-team.pdf" target="_blank" rel="noopener"><div class="ph"><img src="sales-team.jpg" alt="Certificate: Integrated Sales Team Development and Strategic Business Planning" loading="lazy"></div></a><figcaption><b>Integrated Sales Team Development and Strategic Business Planning</b>16 — 21 June 2025</figcaption></figure>
+      <figure><a href="moment-of-truth.pdf" target="_blank" rel="noopener"><div class="ph"><img src="moment-of-truth.jpg" alt="Certificate: Analysis and Management of Moment of Truth" loading="lazy"></div></a><figcaption><b>Analysis and Management of Moment of Truth</b>24 — 29 June 2024</figcaption></figure>
+      <figure><a href="securities-analysis.pdf" target="_blank" rel="noopener"><div class="ph"><img src="securities-analysis.jpg" alt="Certificate: Securities Fundamental Analysis" loading="lazy"></div></a><figcaption><b>Securities Fundamental Analysis</b>29 April 2024</figcaption></figure>
+      <figure><a href="e-marketing.pdf" target="_blank" rel="noopener"><div class="ph"><img src="e-marketing.jpg" alt="Certificate: E-Marketing Strategies Planner" loading="lazy"></div></a><figcaption><b>E-Marketing Strategies Planner</b>19 February — 2 March 2024</figcaption></figure>
+      <figure><a href="marketing-environment.pdf" target="_blank" rel="noopener"><div class="ph"><img src="marketing-environment.jpg" alt="Certificate: Marketing Environment Analysis" loading="lazy"></div></a><figcaption><b>Marketing Environment Analysis</b>19 — 24 June 2023</figcaption></figure>
+      <figure><a href="business-communication.pdf" target="_blank" rel="noopener"><div class="ph"><img src="business-communication.jpg" alt="Certificate: Effective Business Communication" loading="lazy"></div></a><figcaption><b>Effective Business Communication</b>27 February — 4 March 2023</figcaption></figure>
+    </div>
+  </section>
+
+
+  <section id="contact" style="padding:0;border:none;max-width:none">
+    <div class="contact">
+      <h2>Open for internship or full-time opportunities.</h2>
+      <div class="links">
+        <a href="muh.danilrmdhan@gmail.com">muh.danilrmdhan@gmail.com</a>
+        <a href="https://www.linkedin.com/in/muhamad-danil-ramadhan-0a9963373/" target="_blank" rel="noopener">linkedin.com/in/Muhamad Danil Ramadhan</a>
+      </div>
+      <a class="btn" href="mailto:email@example.com">Contact me</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Muhamad Danil Ramadhan</footer>
+</main>
+
+<script>
+  // logo fallback: show initials if a logo link is missing or broken
+  document.querySelectorAll('.ico[data-fb] img').forEach(img => {
+    const fb = () => { img.parentElement.classList.add('nologo'); img.remove(); };
+    img.addEventListener('error', fb);
+    if (img.complete && img.naturalWidth === 0) fb();
+  });
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // hero title: word-by-word entrance
+  const ht = document.querySelector('.hero-title');
+  if (ht && !reduce) {
+    ht.innerHTML = ht.textContent.trim().split(/\s+/).map((w, i) =>
+      `<span class="word" style="animation-delay:${0.2 + i * 0.1}s">${w}</span>`).join(' ');
+  }
+
+  // scroll reveal (once), light stagger inside grids
+  const single = '#about h2,.sub,.lede,section h2,h3.mini,.row,.paper,.contact';
+  document.querySelectorAll(single).forEach(el => el.classList.add('reveal'));
+  ['.facts','.tools','.gal','.chips'].forEach(sel => document.querySelectorAll('main ' + sel).forEach(c =>
+    Array.from(c.children).forEach((k, i) => { k.classList.add('reveal'); if (!reduce) k.style.transitionDelay = Math.min(i, 8) * 0.06 + 's'; })));
+  document.querySelectorAll('.edu').forEach(el => el.classList.add('reveal'));
+
+  if (!reduce && 'IntersectionObserver' in window) {
+    const ro = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in-view'); ro.unobserve(e.target); }
+    }), { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+  }
+
+  const links = document.querySelectorAll('#menu a, #top a');
+  const secs = document.querySelectorAll('section[id]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    }), { rootMargin: '-40% 0px -55% 0px' });
+    secs.forEach(s => io.observe(s));
+  }
+</script>
+</body>
+</html>
